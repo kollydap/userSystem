@@ -88,12 +88,8 @@
 
 # Binary Search in python
 
-
-def binarySorter(startingPoint,endPoint,arr,x):
-    print(f"Your Array is: {arr}")
-    print("sorting Your Array.........................................................................")
-    arr.sort()
-    print(arr)
+#Iterative Method
+def IterativebinarySorter(startingPoint,endPoint,arr,x):
     while startingPoint <= endPoint:
         mid = startingPoint + (endPoint - startingPoint)//2
         if arr[mid]== x:
@@ -106,5 +102,24 @@ def binarySorter(startingPoint,endPoint,arr,x):
             endPoint = mid- 1
     return -1
 
+
 arr = [1,45,67,89,2,3,4,5,45,89,12,34,56]
-binarySorter(0,len(arr)-1,arr,45)
+IterativebinarySorter(0,len(arr)-1,arr,45)
+
+#Recursive Binary Sorter
+
+def RecurssiveBinarySorter(startingPoint,endPoint,arr,x):
+
+    if startingPoint<=endPoint:
+        mid = startingPoint + (endPoint - startingPoint) // 2
+        if arr[mid] == x :
+            return mid
+        elif arr[mid] > x: #meaning its on the lefttside side
+            return RecurssiveBinarySorter(startingPoint,mid-1,arr,x)
+        else:
+           return RecurssiveBinarySorter(mid+1,endPoint, arr, x)
+    else:
+        return "not found"
+
+arr = [1,45,67,89,2,3,4,5,45,89,12,34,56]
+print(RecurssiveBinarySorter(0,len(arr)-1,arr,45))
